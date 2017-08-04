@@ -1,0 +1,24 @@
+name: MultiTwitchWhitelist
+main: cat.jaffa.multitwitchwhitelist.MultiTwitchWhitelist
+version: 0.2
+author: Jaffa
+description: A Plugin to handle multiple twitch stream whitelisting.
+
+commands:
+  mtwl:
+    description: Administrate MultiTwitchWhitelist
+    usage: /<command> [action]
+    permission: multiwhitelist.admin
+    permission-message: You do not have permission to administrate the whitelist.
+permissions:
+  mtwl.admin:
+    description: Gives access to administration of the plugin
+    default: op
+  mtwl.bypasswhitelist:
+    description: Bypasses whitelist requirements
+    default: op
+  mtwl.bypassban:
+      description: Bypasses MultiTwitchWhitelist bans.
+      default: op
+  mtwl.connectionfailbypass:
+    description: Bypasses whitelist when connection to whitelisting site fails
