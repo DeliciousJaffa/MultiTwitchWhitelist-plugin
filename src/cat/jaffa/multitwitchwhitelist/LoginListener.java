@@ -51,7 +51,11 @@ public class LoginListener implements Listener {
             //TODO: Check ban expiration
             if (bans.size() > 0) {
                 WhitelistData.Ban ban = bans.get(0);
-                e.disallow(PlayerLoginEvent.Result.KICK_BANNED, String.format("Banned by: %s\nReason: %s", ban.getInvokerDisplayname(), ban.getReason()));
+                if (ban.isGlobal()) {
+                    e.disallow(PlayerLoginEvent.Result.KICK_BANNED, String.format("Global Banned\nReason: %s", ban.getReason()));
+                } else {
+                    e.disallow(PlayerLoginEvent.Result.KICK_BANNED, String.format("Banned by: %s\nReason: %s", ban.getInvokerDisplayname(), ban.getReason()));
+                }
                 break process;
             }
             //Check if manually whitelisted.
