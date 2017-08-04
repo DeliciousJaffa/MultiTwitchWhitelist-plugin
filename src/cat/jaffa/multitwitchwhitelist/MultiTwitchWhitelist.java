@@ -3,6 +3,7 @@ package cat.jaffa.multitwitchwhitelist;
  * Created by Jaffa on 03/07/2017.
  */
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -51,13 +52,13 @@ public class MultiTwitchWhitelist extends JavaPlugin {
                 switch (args[0].toLowerCase()) {
                     case "reload": {
                         reloadConfig();
-                        sender.sendMessage("MultiTwitchWhitelist Config Reloaded");
+                        Bukkit.broadcast("MultiTwitchWhitelist Config Reloaded by " + sender.getName(), "mtwl.admin");
                     }
                     break;
                     case "enable": {
                         cfg.set("Enabled", true);
                         saveConfig();
-                        sender.sendMessage("MultiTwitchWhitelist Enabled");
+                        Bukkit.broadcast("MultiTwitchWhitelist Enabled by " + sender.getName(), "mtwl.admin");
                         log.info("Enabled by command (" + sender.getName() + ")");
                         log.warning("MultiTwitchWhitelist is under development and not currently working.");
                     }
@@ -65,7 +66,7 @@ public class MultiTwitchWhitelist extends JavaPlugin {
                     case "disable": {
                         cfg.set("Enabled", false);
                         saveConfig();
-                        sender.sendMessage("MultiTwitchWhitelist Disabled");
+                        Bukkit.broadcast("MultiTwitchWhitelist Disabled by " + sender.getName(), "mtwl.admin");
                         log.info("Disabled by command (" + sender.getName() + ")");
                     }
                     break;
