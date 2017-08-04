@@ -19,7 +19,7 @@ public class TwitchData {
     {
         return data.get(player.getUniqueId());
     }
-    protected static void set (Player player, WhitelistData obj){
+    static void set (Player player, WhitelistData obj){
         data.put(player.getUniqueId(),obj);
     }
 

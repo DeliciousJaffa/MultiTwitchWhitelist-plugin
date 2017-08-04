@@ -26,14 +26,23 @@ public class MultiTwitchWhitelist extends JavaPlugin {
         cfg.addDefault("ClientSecret","Client Secret");
         cfg.addDefault("ChangeDisplayname",false);
         cfg.addDefault("ChangeListname",false);
-        //Temp config entry
-        cfg.addDefault("KickOnConnectionFail",true);
+        cfg.addDefault("TryCacheOnFail",true);
+        cfg.addDefault("KickOnFail",true);
         cfg.addDefault("Debug.enableDevFeatures",false);
-        if (cfg.getBoolean("Debug.enableDevFeatures")) cfg.addDefault("Debug.APIURL",apiURL);
+        cfg.addDefault("Debug.apiURL","default");
         cfg.options().copyDefaults(true);
         saveConfig();
 
         getServer().getPluginManager().registerEvents(new LoginListener(), this);
+    }
+
+    protected static String getApiURL() {
+        String url = apiURL;
+        if (cfg.getBoolean("Debug.enableDevFeatures") && cfg.getString("Debug.apiURL").equalsIgnoreCase("default")) {
+            return cfg.getString("Debug.apiURL");
+        } else {
+            return apiURL;
+        }
     }
 
     @Override

@@ -125,7 +125,6 @@ public class WhitelistData {
     }
 
     private User user;
-
     public User getUser() {
         return user;
     }
@@ -135,25 +134,30 @@ public class WhitelistData {
     }
     private List<Ban> bans;
 
+    private List<Sub> subs;
     public List<Sub> getSubs() {
         return subs;
     }
-    private List<Sub> subs;
 
     private Boolean subbed;
-
-    public Boolean getSubbed() {
+    public Boolean isSubbed() {
         return subbed;
     }
 
-    public Boolean getBanned() {
+    private Boolean banned;
+    public Boolean isBanned() {
         return banned;
     }
 
-    private Boolean banned;
+    private Boolean manual;
+    public Boolean isManual() {
+        return manual;
+    }
+
+    private Boolean whitelisted;
+    public Boolean isWhitelisted() { return whitelisted;}
 
     private int statusCode;
-
     public int getStatusCode() {
         return statusCode = 200;
     }

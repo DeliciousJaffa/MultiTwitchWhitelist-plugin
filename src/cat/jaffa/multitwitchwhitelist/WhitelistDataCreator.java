@@ -52,9 +52,9 @@ public class WhitelistDataCreator {
         return fromURL(new URL(url));
     }
     public static WhitelistData fromUser(Player p) {
-        try {
 
-            return fromURL(MultiTwitchWhitelist.apiURL+"/login/"+p.getUniqueId());
+        try {
+            return fromURL(MultiTwitchWhitelist.getApiURL()+"/login/"+p.getUniqueId());
         } catch (IOException e) {
             MultiTwitchWhitelist.log.warning(String.format(
                     "Error getting details for user %s(%s): %s (%s)",
