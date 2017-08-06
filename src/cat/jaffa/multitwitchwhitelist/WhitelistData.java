@@ -158,7 +158,7 @@ public class WhitelistData {
     public Boolean isWhitelisted() { return whitelisted;}
 
     private int statusCode;
-    public int getStatusCode() {
+    protected int getStatusCode() {
         return statusCode = 200;
     }
 }

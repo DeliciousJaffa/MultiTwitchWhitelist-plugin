@@ -8,15 +8,31 @@ commands:
   mtwl:
     description: Administrate MultiTwitchWhitelist
     usage: /<command> [action]
+    permission: multiwhitelist.admin
+    permission-message: You do not have permission to administrate the whitelist.
 permissions:
   mtwl.admin:
-    description: Gives access to administration of the plugin
+    description: Gives access to administration commands of the plugin
     default: op
-  mtwl.bypasswhitelist:
+  mtwl.bypass:
+    description: Bypasses whitelist/ban requirements
+    default: op
+    children:
+      mtwl.bypass.list: true
+      mtwl.bypass.ban: true
+      mtwl.bypass.fail: true
+  mtwl.bypass.list:
     description: Bypasses whitelist requirements
     default: op
-  mtwl.bypassban:
+  mtwl.bypass.ban:
     description: Bypasses MultiTwitchWhitelist bans.
     default: op
-  mtwl.connectionfailbypass:
-    description: Bypasses whitelist when connection to whitelisting site fails
+  mtwl.bypass.fail:
+    description: Bypasses when connection failed (Dangerous, will allow uncached player who has ban to join)
+    default: op
+  mtwl.bypass.register:
+    description: Allows the user to bypass connecting their account
+    default: false
+  mtwl.bypass.severe:
+      description: This permission should only be used when instructed
+      default: false

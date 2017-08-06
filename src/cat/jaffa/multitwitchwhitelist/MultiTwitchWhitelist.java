@@ -69,7 +69,6 @@ public class MultiTwitchWhitelist extends JavaPlugin {
                         saveConfig();
                         Bukkit.broadcast("MultiTwitchWhitelist Enabled by " + sender.getName(), "mtwl.admin");
                         log.info("Enabled by command (" + sender.getName() + ")");
-                        log.warning("MultiTwitchWhitelist is under development and not currently working.");
                     }
                     break;
                     case "disable": {

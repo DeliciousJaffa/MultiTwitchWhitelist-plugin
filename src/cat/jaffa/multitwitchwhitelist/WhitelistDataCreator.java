@@ -43,18 +43,14 @@ public class WhitelistDataCreator {
             response.append(inputLine);
         }
         in.close();
-        //print result
-        System.out.println(response.toString());
+
         return gson.fromJson(response.toString(),WhitelistData.class);
 
-    }
-    private static WhitelistData fromURL(String url) throws IOException {
-        return fromURL(new URL(url));
     }
     public static WhitelistData fromUser(Player p) {
 
         try {
-            return fromURL(MultiTwitchWhitelist.getApiURL()+"/login/"+p.getUniqueId());
+            return fromURL(new URL(MultiTwitchWhitelist.getApiURL()+"/login/"+p.getUniqueId()));
         } catch (IOException e) {
             MultiTwitchWhitelist.log.warning(String.format(
                     "Error getting details for user %s(%s): %s (%s)",
