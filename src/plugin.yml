@@ -1,6 +1,6 @@
 name: MultiTwitchWhitelist
 main: cat.jaffa.multitwitchwhitelist.MultiTwitchWhitelist
-version: 0.3
+version: 0.4
 author: Jaffa
 description: A Plugin to handle multiple twitch stream whitelisting.
 
