@@ -10,7 +10,7 @@ import java.util.UUID;
  */
 public class WhitelistData {
 
-    public class User {
+    public static class User {
         public int getId() {
             return id;
         }
@@ -157,8 +157,11 @@ public class WhitelistData {
     private Boolean whitelisted;
     public Boolean isWhitelisted() { return whitelisted;}
 
-    private int statusCode;
+    private int statusCode = 500;
     protected int getStatusCode() {
-        return statusCode = 200;
+        return statusCode;
+    }
+    protected void setStatusCode(int code) {
+        statusCode = code;
     }
 }
