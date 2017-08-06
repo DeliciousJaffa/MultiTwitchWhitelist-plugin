@@ -61,20 +61,20 @@ public class MultiTwitchWhitelist extends JavaPlugin {
                 switch (args[0].toLowerCase()) {
                     case "reload": {
                         reloadConfig();
-                        Bukkit.broadcast("MultiTwitchWhitelist Config Reloaded by " + sender.getName(), "mtwl.admin");
+                        Bukkit.broadcast("MultiTwitchWhitelist reloaded by " + sender.getName(), "mtwl.admin");
                     }
                     break;
                     case "enable": {
                         cfg.set("Enabled", true);
                         saveConfig();
-                        Bukkit.broadcast("MultiTwitchWhitelist Enabled by " + sender.getName(), "mtwl.admin");
+                        Bukkit.broadcast("MultiTwitchWhitelist enabled by " + sender.getName(), "mtwl.admin");
                         log.info("Enabled by command (" + sender.getName() + ")");
                     }
                     break;
                     case "disable": {
                         cfg.set("Enabled", false);
                         saveConfig();
-                        Bukkit.broadcast("MultiTwitchWhitelist Disabled by " + sender.getName(), "mtwl.admin");
+                        Bukkit.broadcast("MultiTwitchWhitelist disabled by " + sender.getName(), "mtwl.admin");
                         log.info("Disabled by command (" + sender.getName() + ")");
                     }
                     break;
