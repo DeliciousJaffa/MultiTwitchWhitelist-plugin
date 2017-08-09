@@ -102,7 +102,7 @@ public class LoginListener implements Listener {
 
         } else {
             MultiTwitchWhitelist.log.warning("Null whitelist data passed to handleLogin, report this error.");
-            if (MultiTwitchWhitelist.cfg().getBoolean("KickOnConnectionFail")) {
+            if (MultiTwitchWhitelist.cfg().getBoolean("KickOnFail")) {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Unable to connect to whitelisting server\nPlease try again later.");
             }
         }
@@ -126,7 +126,7 @@ public class LoginListener implements Listener {
                             handleLogin(e, cachedata);
                         } else {
                             MultiTwitchWhitelist.log.warning("API returned invalid or no data, no player cache available");
-                            if (MultiTwitchWhitelist.cfg().getBoolean("KickOnConnectionFail") && !p.hasPermission("mtwl.bypass.fail")) {
+                            if (MultiTwitchWhitelist.cfg().getBoolean("KickOnFail") && !p.hasPermission("mtwl.bypass.fail")) {
                                 //Kick player on fail with no cache if option is enabled.
                                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Unable to connect to whitelisting server\nPlease try again later.");
                             }
@@ -140,9 +140,13 @@ public class LoginListener implements Listener {
                 }
             } else {
                 MultiTwitchWhitelist.log.warning("Your API credentials are incorrect, change them and run /mtwl reload");
-                MultiTwitchWhitelist.log.info(p.getName() + " Bypassing API fail");
-                if (MultiTwitchWhitelist.cfg().getBoolean("KickOnConnectionFail")) {
-                    e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Whitelisting configured incorrectly\nPlease try again later or contact a server admin.");
+
+                if (MultiTwitchWhitelist.cfg().getBoolean("KickOnFail")) {
+                    if (p.hasPermission("mtwl.bypass.fail")) {
+                        MultiTwitchWhitelist.log.info(p.getName() + " Bypassing incorrect API credentials fail");
+                    } else {
+                        e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Whitelisting configured incorrectly\nPlease try again later or contact a server admin.");
+                    }
                 }
             }
         }
